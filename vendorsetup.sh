@@ -1,1 +1,1 @@
-add_lunch_combo full_rpi-eng
+add_lunch_combo full_versatilepb-eng
