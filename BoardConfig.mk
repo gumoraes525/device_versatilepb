@@ -1,25 +1,38 @@
-TARGET_GLOBAL_CFLAGS += -mfpu=vfp -mfloat-abi=softfp -Os
-TARGET_GLOBAL_CPPFLAGS += -mfpu=vfp -mfloat-abi=softfp -Os
+# Global C/C++ flags
+TARGET_GLOBAL_CFLAGS  += -march=armv5te -marm -Os
+TARGET_GLOBAL_CPPFLAGS += -march=armv5te -marm -Os
 
+# Architecture
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv6-vfp
+TARGET_ARCH_VARIANT := arm926ej-s
 
-TARGET_CPU_ABI := armeabi-v6l
+# CPU ABIs
+TARGET_CPU_ABI := armeabi
 TARGET_CPU_ABI2 := armeabi
-ARCH_ARM_HAVE_VFP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_ARCH_VARIANT_CPU := arm1176jzf-s
 
+# VFP: ARM926EJ-S does NOT have VFP, disable it
+ARCH_ARM_HAVE_VFP := false
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+# No hardware floating point
+TARGET_ARCH_VARIANT_CPU := arm926ej-s
+
+# Skip kernel build for board
 TARGET_NO_KERNEL := true
 
+# Audio
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
 BUILD_WITH_ALSA_UTILS := true
+
+# No Bluetooth
 BOARD_HAVE_BLUETOOTH := false
+
+# Camera stub (use software stub for missing hardware)
 USE_CAMERA_STUB := true
 
+# JS engine and HTTP
 JS_ENGINE := v8
 HTTP := chrome
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-
+WITH_JIT := false         # ARMv5 does NOT support JIT well
+ENABLE_JSC_JIT := false
