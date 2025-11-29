@@ -4,7 +4,7 @@ TARGET_GLOBAL_CPPFLAGS += -march=armv5te -marm -Os
 
 # Architecture
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := arm926ej-s
+TARGET_ARCH_VARIANT := armv5te
 
 # CPU ABIs
 TARGET_CPU_ABI := armeabi
@@ -15,10 +15,7 @@ ARCH_ARM_HAVE_VFP := false
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # No hardware floating point
-TARGET_ARCH_VARIANT_CPU := arm926ej-s
-
-# Skip kernel build for board
-TARGET_NO_KERNEL := true
+TARGET_ARCH_VARIANT_CPU := armv5te
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
