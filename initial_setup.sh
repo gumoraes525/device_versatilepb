@@ -14,8 +14,8 @@ if [[ $DIR != "." && $WORKDIR != $DIR ]]; then
    exit
 fi
 
-VENDOR_FILE="../../../vendor/cyanogen/products/cyanogen_rpi.mk"
-ARM_ARCH_FILE="../../../build/core/combo/arch/arm/armv6-vfp.mk"
+VENDOR_FILE="../../../vendor/cyanogen/products/cyanogen_versatilepb.mk"
+ARM_ARCH_FILE="../../../build/core/combo/arch/arm/armv5te.mk"
 ARM_ARCH_MD5=`md5sum armv6-vfp.mk.dummy | awk '{ print $1 }'`
 
 if [ ! -d "../../../vendor/cyanogen/proprietary" ]; then
@@ -31,7 +31,7 @@ else
    if [ $? -ne 0 ]; then
       echo "... failed to do so."
       echo "Copying the new one for you"
-      cp armv6-vfp.mk.dummy $ARM_ARCH_FILE && echo "done, please re-run the script."
+      cp armv5te.mk.dummy $ARM_ARCH_FILE && echo "done, please re-run the script."
       exit
    fi
 fi
@@ -52,21 +52,21 @@ read -p "Press [ENTER] if you want to continue, or else CTRL+C to bail out."
 
 if [ ! -f $VENDOR_FILE ]; then
    echo "Vendor file does not exist, copying..."
-   cp cyanogen_rpi.mk.dummy $VENDOR_FILE
+   cp cyanogen_versatilepb.mk.dummy $VENDOR_FILE
 else
    echo "Vendor file already exists."
 fi
 
 if [[ -f $ARM_ARCH_FILE && $ARM_ARCH_LOCAL_MD5 != $ARM_ARCH_MD5 ]]; then
    echo "armv6-vfp.mk differs from the needed one, correcting..."
-   mv $ARM_ARCH_FILE "$ARM_ARCH_FILE".bak && cp armv6-vfp.mk.dummy "$ARM_ARCH_FILE" && echo "Success."
+   mv $ARM_ARCH_FILE "$ARM_ARCH_FILE".bak && cp armv5te.mk.dummy "$ARM_ARCH_FILE" && echo "Success."
 else
    echo "armv6-vfp.mk doesn't need any changes."
 fi
 
-LINE="add_lunch_combo cyanogen_rpi-eng"
+LINE="add_lunch_combo cyanogen_versatilepb-eng"
 VENDSETUP="../../../vendor/cyanogen/vendorsetup.sh"
-VENDCHECK=`cat $VENDSETUP | grep cyanogen_rpi-eng | wc -l`
+VENDCHECK=`cat $VENDSETUP | grep cyanogen_versatilepb-eng | wc -l`
 
 if [[ $VENDCHECK -gt 0 ]]; then
    echo "vendorsetup.sh doesn't need any changes."
