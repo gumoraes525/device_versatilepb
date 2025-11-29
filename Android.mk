@@ -9,5 +9,5 @@ ALL_PREBUILT += $(file)
 $(file): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
 
-LOCAL_PATH := device/rpi/rpi
+LOCAL_PATH := device/versatile/versatilepb
 include $(CLEAR_VARS)
