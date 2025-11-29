@@ -1,19 +1,19 @@
 # Release name
-PRODUCT_RELEASE_NAME := rpi
+PRODUCT_RELEASE_NAME := versatilepb
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common.mk)
 
-$(call inherit-product, device/rpi/rpi/full_rpi.mk)
+$(call inherit-product, device/versatile/versatilepb/full_versatilepb.mk)
 
 
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := rpi
-PRODUCT_NAME := generic_rpi
-PRODUCT_BRAND := rpi
-PRODUCT_MODEL := rpi
-PRODUCT_MANUFACTURER := rpi
+PRODUCT_DEVICE := versatilepb
+PRODUCT_NAME := generic_versatilepb
+PRODUCT_BRAND := versatile
+PRODUCT_MODEL := versatilepb
+PRODUCT_MANUFACTURER := versatile
 
 -include vendor/cm/config/common_versions.mk
 
