@@ -1,1 +1,1 @@
-add_lunch_combo full_versatilepb-eng
+add_lunch_combo cyanogen_versatilepb-eng
