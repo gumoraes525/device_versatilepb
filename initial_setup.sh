@@ -16,7 +16,7 @@ fi
 
 VENDOR_FILE="../../../vendor/cyanogen/products/cyanogen_versatilepb.mk"
 ARM_ARCH_FILE="../../../build/core/combo/arch/arm/armv5te.mk"
-ARM_ARCH_MD5=`md5sum armv6-vfp.mk.dummy | awk '{ print $1 }'`
+ARM_ARCH_MD5=`md5sum armv5te.mk.dummy | awk '{ print $1 }'`
 
 if [ ! -d "../../../vendor/cyanogen/proprietary" ]; then
    ../../../vendor/cyanogen/get-rommanager
